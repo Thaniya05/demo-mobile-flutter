@@ -18,9 +18,10 @@ class IntroPage extends StatelessWidget {
             child: Text(
               "ยินดีต้อนรับ",
               style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w400,
-                  color: Theme.of(context).primaryColor),
+                fontSize: 40,
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
           Padding(
