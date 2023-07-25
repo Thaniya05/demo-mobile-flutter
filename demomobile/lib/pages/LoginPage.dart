@@ -6,8 +6,10 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final s = ScrollController();
+
   @override
   Widget build(BuildContext context) {
+    final mysize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
@@ -18,9 +20,11 @@ class LoginPage extends StatelessWidget {
         controller: s,
         child: Column(
           children: [
-            _slider(context),
-            const Padding(
-              padding: EdgeInsets.all(40.0),
+            _slider(mysize),
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: mysize.height * 0.45 - (mysize.width * 9 / 16),
+              ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -121,12 +125,13 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  CarouselSlider _slider(BuildContext context) {
+  CarouselSlider _slider(Size size) {
     return CarouselSlider(
       items: [1, 2, 3, 4]
           .map(
             (e) => Container(
-              width: MediaQuery.of(context).size.width,
+              //width: MediaQuery.of(context).size.width,
+              width: size.width,
               child: Center(child: Text("${e}")),
               color: Colors.blueGrey[e * 100],
             ),
@@ -134,7 +139,8 @@ class LoginPage extends StatelessWidget {
           .toList(),
       options: CarouselOptions(
         aspectRatio: 16 / 9,
-        height: 200,
+        height: size.width * 9 / 16,
+        //height: 200,
         //enlargeCenterPage: true,
         viewportFraction: 1,
         autoPlay: true,
