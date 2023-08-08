@@ -74,7 +74,9 @@ class LoginView extends GetView<LoginController> {
                       //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FilledButton.tonal(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed('/hub', preventDuplicates: false);
+                          },
                           child: Container(
                             child: Center(child: Text("LOGIN")),
                             width: Get.width * 0.6,
