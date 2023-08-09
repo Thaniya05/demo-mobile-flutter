@@ -6,13 +6,15 @@ import '../modules/hub/bindings/hub_binding.dart';
 import '../modules/hub/views/hub_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/store/bindings/store_binding.dart';
+import '../modules/store/views/widget/store_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.STORE;
 
   static final routes = [
     GetPage(
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.HUB,
       page: () => const HubView(),
       binding: HubBinding(),
+    ),
+    GetPage(
+      name: _Paths.STORE,
+      page: () => const StoreView(),
+      binding: StoreBinding(),
     ),
   ];
 }

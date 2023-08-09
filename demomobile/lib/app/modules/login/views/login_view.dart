@@ -93,7 +93,8 @@ class LoginView extends GetView<LoginController> {
                               Text(
                                 "Create new account",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor),
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               )
                             ],
                           ),
