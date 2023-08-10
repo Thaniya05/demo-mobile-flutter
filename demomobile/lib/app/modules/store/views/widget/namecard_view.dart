@@ -8,7 +8,7 @@ class NamecardView extends GetView {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      width: Get.width * 0.9,
+      width: Get.width * 16 / 9,
       decoration: const BoxDecoration(
         color: Colors.amber,
         borderRadius: BorderRadius.all(
@@ -19,15 +19,11 @@ class NamecardView extends GetView {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(20, 10, 0, 10),
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey[200],
-              ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
+            child: CircleAvatar(
+              backgroundColor: Colors.grey[200],
+              radius: 40,
             ),
           ),
           const Padding(

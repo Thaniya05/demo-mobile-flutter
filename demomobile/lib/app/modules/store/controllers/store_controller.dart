@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class StoreController extends GetxController {
   //TODO: Implement StoreController
 
-  final count = 0.obs;
+  RxInt count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -20,4 +20,6 @@ class StoreController extends GetxController {
   }
 
   void increment() => count.value++;
+
+  void updateIndicator(int i) => count.value = i;
 }

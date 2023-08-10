@@ -7,7 +7,7 @@ import '../modules/hub/views/hub_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/store/bindings/store_binding.dart';
-import '../modules/store/views/widget/store_view.dart';
+import '../modules/store/views/store_view.dart';
 
 part 'app_routes.dart';
 
