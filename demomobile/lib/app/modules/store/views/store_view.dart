@@ -1,3 +1,5 @@
+import 'package:demomobile/app/modules/store/views/widget/category_bar_view.dart';
+
 import 'widget/carousel_view.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,7 @@ class StoreView extends GetView<StoreController> {
         centerTitle: true,
       ),
       body: Container(
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
         child: Column(
           children: [
             CarouselWidget(),
@@ -27,42 +29,83 @@ class StoreView extends GetView<StoreController> {
             Center(
               child: NamecardView(),
             ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+            ),
             Center(
-              child: Container(
-                //padding: EdgeInsets.all(10.0),
-                width: double.maxFinite,
-                height: 200,
-                //color: Colors.blueGrey,
-                child: ListView.builder(
-                  //shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.red[((index % 4) + 1) * 100],
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                          Text(index.toString()),
-                          Padding(padding: const EdgeInsets.all(10.0)),
-                          Container(
-                            width: 60,
-                            height: 60,
-                            color: Colors.blue[((index % 4) + 1) * 100],
-                          ),
-                        ],
+              child: CategoryBarWidget(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.0),
                       ),
-                    );
-                  },
-                  itemCount: 30,
-                ),
+                      Text(
+                        "Hot deal",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text("View more"),
+                            Icon(Icons.keyboard_arrow_right_outlined),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.0),
+                  ),
+                  Container(
+                    height: 220,
+                    width: double.maxFinite,
+                    //color: Colors.amber,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, index) {
+                        return Card(
+                          color: Colors.white,
+                          margin: EdgeInsets.all(10.0),
+                          elevation: 2,
+                          child: Container(
+                            width: 200 * 3 / 4,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    color: Colors.grey,
+                                  ),
+                                  flex: 2,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    color: Colors.amber,
+                                  ),
+                                  flex: 1,
+                                )
+                              ],
+                            ),
+                            //color: Colors.red,
+                          ),
+                        );
+                      },
+                      itemCount: 20,
+                    ),
+                  )
+                ],
               ),
             )
           ],

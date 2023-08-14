@@ -7,6 +7,7 @@ class NamecardView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       height: 100,
       width: Get.width * 16 / 9,
       decoration: const BoxDecoration(
