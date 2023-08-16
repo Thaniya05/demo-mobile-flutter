@@ -39,7 +39,7 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Text(
                     "LOGIN",
-                    style: TextStyle(),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

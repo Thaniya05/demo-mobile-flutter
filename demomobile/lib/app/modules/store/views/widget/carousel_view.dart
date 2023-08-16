@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-final testimg = "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif";
-
 class CarouselWidget extends GetView<StoreController> {
   CarouselWidget({Key? key}) : super(key: key);
 
@@ -31,7 +29,7 @@ class CarouselWidget extends GetView<StoreController> {
                     //color: Colors.amber,
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(testimg),
+                      image: NetworkImage(controller.testimg),
                       opacity: 0.8,
                     ),
                   ),
