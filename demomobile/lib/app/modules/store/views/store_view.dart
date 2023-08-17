@@ -21,14 +21,16 @@ class StoreView extends GetView<StoreController> {
       appBar: AppBar(
         title: const Text('StoreView'),
         centerTitle: true,
+        backgroundColor: Theme.of(context).primaryColorLight,
         actions: [
           GestureDetector(
-            child: Container(
-              child: Badge.count(
-                count: 10,
-                child: Icon(Icons.shopping_basket),
-              ),
-            ),
+            onTap: () => controller.toCart(),
+            child: Obx(() => Container(
+                  child: Badge.count(
+                    count: controller.cartlist.length,
+                    child: Icon(Icons.shopping_basket),
+                  ),
+                )),
           ),
           Padding(
             padding: EdgeInsets.only(right: 15.0),
@@ -70,9 +72,6 @@ class StoreView extends GetView<StoreController> {
               ),
               Center(
                 child: RecommendWidget(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30.0),
               ),
               Center(
                 child: Card(

@@ -1,8 +1,9 @@
+import 'package:demomobile/app/modules/store/controllers/store_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class CategoryBarWidget extends GetView {
+class CategoryBarWidget extends GetView<StoreController> {
   const CategoryBarWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -31,19 +32,22 @@ class CategoryBarWidget extends GetView {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller
+                              .toCategory(controller.category[index]["name"]);
+                        },
                         icon: Icon(
-                          Icons.airplane_ticket,
+                          controller.category[index]["icon"],
                         ),
                         iconSize: 40,
                       ),
                     ),
-                    Text(index.toString()),
+                    Text(controller.category[index]["name"]),
                   ],
                 ),
               );
             },
-            itemCount: 30,
+            itemCount: controller.category.length,
           ),
         ),
         /*Padding(padding: EdgeInsets.only(bottom: 7.0)),

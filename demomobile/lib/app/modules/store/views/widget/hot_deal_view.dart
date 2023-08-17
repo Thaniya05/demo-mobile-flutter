@@ -1,11 +1,13 @@
+import 'package:demomobile/app/modules/store/controllers/store_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class HotDealWidget extends GetView {
+class HotDealWidget extends GetView<StoreController> {
   const HotDealWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var data = controller.hotdeallist;
     return Column(
       children: [
         Row(
@@ -21,14 +23,17 @@ class HotDealWidget extends GetView {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("View more"),
-                  Icon(Icons.keyboard_arrow_right_outlined),
-                ],
+              child: GestureDetector(
+                onTap: () => controller.toHotDeal(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text("View more"),
+                    Icon(Icons.keyboard_arrow_right_outlined),
+                  ],
+                ),
               ),
             ),
           ],
@@ -48,38 +53,62 @@ class HotDealWidget extends GetView {
                 color: Colors.white,
                 margin: const EdgeInsets.all(10.0),
                 elevation: 2,
-                child: Container(
-                  width: 200 * 3 / 4,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(5.0),
-                            ),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                  "assets/images/${(index % 5) + 1}.jpg"),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.addcart(
+                      TestModel(
+                          name: data[index].name,
+                          id: data[index].id,
+                          type: data[index].type,
+                          price: data[index].price),
+                    );
+                  },
+                  child: Container(
+                    width: 200 * 3 / 4,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(5.0),
+                              ),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    "assets/images/${(index % 5) + 1}.jpg"),
+                              ),
                             ),
                           ),
                         ),
-                        flex: 2,
-                      ),
-                      Expanded(
-                        child: Container(
-                          color: Colors.amber,
-                        ),
-                        flex: 1,
-                      )
-                    ],
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.amber,
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(controller.hotdeallist[index].name),
+                                Text(controller.hotdeallist[index].type),
+                                Text(controller.hotdeallist[index].price
+                                    .toString()),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    //color: Colors.red,
                   ),
-                  //color: Colors.red,
                 ),
               );
             },
-            itemCount: 20,
+            itemCount: controller.hotdeallist.length < 6
+                ? controller.hotdeallist.length
+                : 6,
           ),
         )
       ],
